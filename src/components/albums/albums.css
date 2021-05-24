@@ -1,0 +1,15 @@
+.album {
+    box-shadow: 0 0 2px #ddd;
+    margin: 10px;
+    border: 1px solid #ddd;
+}
+
+.title {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.title_id {
+    color: #777;
+}

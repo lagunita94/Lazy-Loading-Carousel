@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Carousel from "./components/carousel"
+import {getAlbums} from "./api"
+import Albums from "./components/albums"
+import React from "react"
+import LazyLoader from "./components/lazyLoader"
 function App() {
+  const [albums,setAlbums] = React.useState([]);
+  React.useEffect(() => {
+    getAlbums().then((data) => {
+      setAlbums(data);
+    })
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {albums.map((album) => <LazyLoader key={album.id}>
+        <Albums {...album}/>
+      </LazyLoader>)}
     </div>
   );
 }
